@@ -1,1 +1,1 @@
-# qwz-code-generator
+# qwz-generator
