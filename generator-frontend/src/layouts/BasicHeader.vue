@@ -38,11 +38,11 @@
   }>()
 
   const jumpToGithub = () => {
-    window.open('https://github.com/projects/codegen')
+    window.open('https://github.com/qinweizhao/qwz-generator')
   }
 
   const jumpToGitee = () => {
-    window.open('https://gitee.com/projects/codegen')
+    window.open('https://gitee.com/qinweizhao/qwz-generator')
   }
 </script>
 
