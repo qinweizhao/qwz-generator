@@ -238,7 +238,7 @@
         ]
         generate(dsName.value, modelRef)
           .then(response => {
-            remoteFileDownload(response, 'BallCat-CodeGen.zip')
+            remoteFileDownload(response, 'CodeGen.zip')
           })
           .catch(() => {
             message.error('代码生成异常')

@@ -30,7 +30,7 @@
           <a @click="handleCopy(record)">复制</a>
           <a-divider type="vertical" />
           <a-popconfirm title="确认要删除吗？" @confirm="handleRemove(record.id)">
-            <a class="ballcat-text-danger">删除</a>
+            <a class="text-danger">删除</a>
           </a-popconfirm>
         </template>
         <template v-else-if="column.dataIndex === 'action'">

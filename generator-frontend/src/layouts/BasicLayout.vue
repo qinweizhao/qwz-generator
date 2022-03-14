@@ -7,7 +7,7 @@
         <basic-header theme="light" />
       </a-layout-header>
       <a-layout-content style="margin: 16px 16px 8px">
-        <div class="ballcat-layout-content wide">
+        <div class="layout-content wide">
           <router-view />
         </div>
       </a-layout-content>
@@ -26,7 +26,7 @@
     min-height: 100vh;
     height: 100%;
 
-    .ballcat-layout-content {
+    .layout-content {
       &.wide {
         max-width: 80%;
         margin: 0 auto;

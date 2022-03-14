@@ -1,24 +1,20 @@
 <template>
-  <div :class="['ballcat-top-nav-header', theme]">
-    <div class="ballcat-top-nav-header-main">
-      <div class="ballcat-top-nav-header-main-left">
-        <div class="ballcat-top-nav-header-logo">
+  <div :class="['top-nav-header', theme]">
+    <div class="top-nav-header-main">
+      <div class="top-nav-header-main-left">
+        <div class="top-nav-header-logo">
           <a>
             <img src="../assets/logo.svg" alt="logo" />
             <h1>Generator</h1>
           </a>
         </div>
       </div>
-      <div :style="{ flex: 1 }" class="ballcat-top-nav-header-menu">
+      <div :style="{ flex: 1 }" class="top-nav-header-menu">
         <router-menu mode="horizontal" />
       </div>
 
-      <div class="ballcat-top-nav-header-right-content" style="padding-right: 6px">
+      <div class="top-nav-header-right-content" style="padding-right: 6px">
         <a-space class="right" :size="0">
-          <span class="action" @click="jumpToDoc">
-            <QuestionCircleOutlined />
-            <span>文档</span>
-          </span>
           <span class="action" @click="jumpToGithub">
             <GithubOutlined />
             <span>Github</span>
@@ -35,29 +31,24 @@
 
 <script setup lang="ts">
   import RouterMenu from '@/components/menu'
-  import { GithubOutlined, QuestionCircleOutlined } from '@ant-design/icons-vue'
+  import { GithubOutlined } from '@ant-design/icons-vue'
 
   defineProps<{
     theme: 'dark' | 'light'
   }>()
 
   const jumpToGithub = () => {
-    window.open('https://github.com/ballcat-projects/ballcat-codegen')
+    window.open('https://github.com/projects/codegen')
   }
 
   const jumpToGitee = () => {
-    window.open('https://gitee.com/ballcat-projects/ballcat-codegen')
-  }
-
-  const jumpToDoc = () => {
-    window.open('http://www.ballcat.cn/codegen/#%E5%89%8D%E8%A8%80')
+    window.open('https://gitee.com/projects/codegen')
   }
 </script>
 
 <style scoped lang="less">
   @import (reference) 'ant-design-vue/es/style/themes/index.less';
-  @ant-prefix: ~'ballcat';
-  @top-nav-header-prefix-cls: ~'@{ant-prefix}-top-nav-header';
+  @top-nav-header-prefix-cls: ~'top-nav-header';
   @pro-header-hover-bg: rgba(0, 0, 0, 0.025);
 
   .@{top-nav-header-prefix-cls} {

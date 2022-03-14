@@ -11,7 +11,7 @@
  Target Server Version : 80028
  File Encoding         : 65001
 
- Date: 13/03/2022 22:14:35
+ Date: 14/03/2022 13:56:04
 */
 
 SET NAMES utf8mb4;
@@ -39,26 +39,31 @@ BEGIN;
 COMMIT;
 
 -- ----------------------------
--- Table structure for gen_template_directory_entry
+-- Table structure for gen_template_entry
 -- ----------------------------
-DROP TABLE IF EXISTS `gen_template_directory_entry`;
-CREATE TABLE `gen_template_directory_entry` (
+DROP TABLE IF EXISTS `gen_template_entry`;
+CREATE TABLE `gen_template_entry` (
   `id` int NOT NULL AUTO_INCREMENT,
   `group_id` int DEFAULT NULL COMMENT '模板组Id',
-  `file_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '文件夹路径/模板文件名称（支持占位符）',
+  `filename` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '文件夹路径/模板文件名称（支持占位符）',
   `type` tinyint(1) DEFAULT NULL COMMENT '文件类型 1：文件夹 2：模板文件',
   `parent_id` int DEFAULT NULL COMMENT '父级Id',
+  `content` longtext COLLATE utf8mb4_general_ci COMMENT '模板内容',
+  `engine_type` tinyint(1) DEFAULT NULL COMMENT '模板引擎类型 1：velocity',
+  `remarks` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '备注',
   `deleted` bigint DEFAULT NULL COMMENT '逻辑删除标识',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE KEY `uk_name_parent_id` (`deleted`,`group_id`,`parent_id`,`file_name`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC COMMENT='模板文件目录项';
+  UNIQUE KEY `uk_name_parent_id` (`deleted`,`group_id`,`parent_id`,`filename`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC COMMENT='模板文件目录项';
 
 -- ----------------------------
--- Records of gen_template_directory_entry
+-- Records of gen_template_entry
 -- ----------------------------
 BEGIN;
+INSERT INTO `gen_template_entry` (`id`, `group_id`, `filename`, `type`, `parent_id`, `content`, `engine_type`, `remarks`, `deleted`, `create_time`, `update_time`) VALUES (1, 1, NULL, 1, 0, NULL, NULL, NULL, 0, '2022-03-14 13:22:43', NULL);
+INSERT INTO `gen_template_entry` (`id`, `group_id`, `filename`, `type`, `parent_id`, `content`, `engine_type`, `remarks`, `deleted`, `create_time`, `update_time`) VALUES (2, 1, 'Controller', 1, 1, NULL, NULL, NULL, 0, '2022-03-14 13:23:04', NULL);
 COMMIT;
 
 -- ----------------------------
@@ -73,35 +78,13 @@ CREATE TABLE `gen_template_group` (
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC COMMENT='模板组';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC COMMENT='模板组';
 
 -- ----------------------------
 -- Records of gen_template_group
 -- ----------------------------
 BEGIN;
-COMMIT;
-
--- ----------------------------
--- Table structure for gen_template_info
--- ----------------------------
-DROP TABLE IF EXISTS `gen_template_info`;
-CREATE TABLE `gen_template_info` (
-  `directory_entry_id` int NOT NULL COMMENT '目录项ID',
-  `group_id` int DEFAULT NULL COMMENT '模板组ID',
-  `title` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '模板标题',
-  `content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci COMMENT '模板内容',
-  `engine_type` tinyint(1) DEFAULT NULL COMMENT '模板引擎类型 1：velocity',
-  `remarks` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '备注',
-  `deleted` bigint DEFAULT '0' COMMENT '逻辑删除',
-  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-  `update_time` datetime DEFAULT NULL COMMENT '修改时间',
-  PRIMARY KEY (`directory_entry_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC COMMENT='模板信息';
-
--- ----------------------------
--- Records of gen_template_info
--- ----------------------------
-BEGIN;
+INSERT INTO `gen_template_group` (`id`, `name`, `remarks`, `deleted`, `create_time`, `update_time`) VALUES (1, 'aa', NULL, 0, '2022-03-14 13:20:53', '2022-03-14 13:22:28');
 COMMIT;
 
 -- ----------------------------
