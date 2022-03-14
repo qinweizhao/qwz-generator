@@ -5,7 +5,7 @@
         <div class="ballcat-top-nav-header-logo">
           <a>
             <img src="../assets/logo.svg" alt="logo" />
-            <h1>Ballcat Generator</h1>
+            <h1>Generator</h1>
           </a>
         </div>
       </div>
