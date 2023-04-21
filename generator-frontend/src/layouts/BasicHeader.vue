@@ -4,7 +4,7 @@
       <div class="top-nav-header-main-left">
         <div class="top-nav-header-logo">
           <a>
-            <img src="../assets/logo.svg" alt="logo" />
+            <!-- <img src="../assets/logo.svg" alt="logo" /> -->
             <h1>Generator</h1>
           </a>
         </div>
