@@ -26,9 +26,16 @@
     "lodash-es": "^4.17.21",
     "splitpanes": "^3.0.6",
     "vue": "^3.2.25",
-    "vue-router": "^4.0.12"
+    "vue-router": "^4.0.12",
+    // add
+    "crypto-js": "^4.1.1",
+    "pinia": "^2.0.35"
   },
   "devDependencies": {
+    // add
+    "unplugin-auto-import": "^0.15.3",
+    "@types/crypto-js": "^4.1.1",
+
     "@types/lodash-es": "^4.17.6",
     "@types/node": "^17.0.17",
     "@types/splitpanes": "^2.2.1",
