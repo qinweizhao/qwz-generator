@@ -2,10 +2,6 @@
   <div :class="getCls('container')">
     <div :class="getCls('top')">
       <div :class="getCls('header')">
-        <!-- logoAndTitle -->
-<!--        <span :class="getCls('logo')">-->
-<!--          <img alt="logo" src="@/assets/logo.png" />-->
-<!--        </span>-->
         <!-- 标题 -->
         <span :class="getCls('title')"> Sign in </span>
       </div>
@@ -15,7 +11,7 @@
 
     <div :class="getCls('main')" style="width: 368px">
       <a-tabs>
-        <a-tab-pane key="account" tab="账号密码登录"></a-tab-pane>
+        <a-tab-pane key="account" tab="登录"></a-tab-pane>
       </a-tabs>
 
       <!-- 错误提示信息 -->
@@ -32,7 +28,6 @@
 
       <div style="margin-bottom: 24px">
         <a-checkbox v-model:checked="rememberMe" no-style name="autoLogin"> 自动登录</a-checkbox>
-        <a style="float: right">忘记密码</a>
       </div>
 
       <a-button
