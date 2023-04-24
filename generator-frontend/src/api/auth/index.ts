@@ -60,5 +60,5 @@ export function checkToken(token: string) {
  * 登出
  */
 export function logout() {
-  return request.delete('/oauth/logout')
+  return request.delete('/logout')
 }

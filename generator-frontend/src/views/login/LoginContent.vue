@@ -26,9 +26,9 @@
       <!-- 账户密码登录 -->
       <account-login-form ref="accountLoginFormRef" @try-submit="handleLogin" />
 
-      <div style="margin-bottom: 24px">
-        <a-checkbox v-model:checked="rememberMe" no-style name="autoLogin"> 记住密码</a-checkbox>
-      </div>
+<!--      <div style="margin-bottom: 24px">-->
+<!--        <a-checkbox v-model:checked="rememberMe" no-style name="autoLogin"> 记住密码</a-checkbox>-->
+<!--      </div>-->
 
       <a-button
         size="large"
@@ -100,6 +100,10 @@
       .then(res => {
         isLoginError.value = false
         store(res)
+        console.log('router.currentRoute.value.query.redirect')
+        console.log(router.currentRoute.value.query.redirect)
+        console.log('router')
+        console.log(router)
         const nextPath = (router.currentRoute.value.query.redirect as string) || '/'
         router.push(nextPath)
       })

@@ -15,14 +15,14 @@
 
       <div class="top-nav-header-right-content" style="padding-right: 6px">
         <a-space class="right" :size="0">
-          <span class="action" @click="jumpToGithub">
-            <GithubOutlined />
-            <span>Github</span>
+          <span class="action" @click="loginOut">
+            <LogoutOutlined />
+            <span>退出</span>
           </span>
-          <span class="action" @click="jumpToGitee">
-            <img src="../assets/gitee.svg" alt="gitee" />
-            <span>Gitee</span>
-          </span>
+          <!--          <span class="action" @click="jumpToGitee">-->
+          <!--            <img src="../assets/gitee.svg" alt="gitee" />-->
+          <!--            <span>Gitee</span>-->
+          <!--          </span>-->
         </a-space>
       </div>
     </div>
@@ -31,7 +31,10 @@
 
 <script setup lang="ts">
   import RouterMenu from '@/components/menu'
-  import { GithubOutlined } from '@ant-design/icons-vue'
+  import { Modal } from 'ant-design-vue'
+  import { useRouter } from 'vue-router'
+  import { useUserStore } from '@/store/user-store'
+  import { logout } from '@/api/auth'
 
   defineProps<{
     theme: 'dark' | 'light'
@@ -43,6 +46,35 @@
 
   const jumpToGitee = () => {
     window.open('https://gitee.com/qinweizhao/qwz-generator')
+  }
+
+  const router = useRouter()
+
+  const userStore = useUserStore()
+
+  function loginOut() {
+    Modal.confirm({
+      title: '提示',
+      content: '确定要退出登录吗 ?',
+      okText: '确认',
+      cancelText: '取消',
+      onOk: () => {
+        // 没有 accessToken 的话，直接登出
+        if (!userStore.accessToken) {
+          setTimeout(() => {
+            router.push('/login')
+          }, 200)
+          return
+        }
+        // 有 accessToken 的话，就先执行登出操作
+        logout().then(() => {
+          userStore.clean()
+          setTimeout(() => {
+            router.push('/login')
+          }, 200)
+        })
+      }
+    })
   }
 </script>
 

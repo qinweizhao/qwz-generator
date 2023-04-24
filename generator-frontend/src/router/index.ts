@@ -29,6 +29,13 @@ const menuRouters: Array<BallcatRouteRecordRaw> = [
 ]
 const routes: Array<BallcatRouteRecordRaw> = [
   {
+    path: '/',
+    name: 'Home',
+    component: () => import('../layouts/BasicLayout.vue'),
+    children: [...menuRouters],
+    redirect: '/codegen'
+  },
+  {
     path: '/login',
     name: 'Login',
     // route level code-splitting
@@ -36,13 +43,6 @@ const routes: Array<BallcatRouteRecordRaw> = [
     // which is lazy-loaded when the route is visited.
     meta: { title: '登陆' },
     component: () => import('@/views/login/index.vue')
-  },
-  {
-    path: '/',
-    name: 'Home',
-    component: () => import('../layouts/BasicLayout.vue'),
-    children: [...menuRouters],
-    redirect: '/codegen'
   },
   {
     path: '/:catchAll(.*)',
