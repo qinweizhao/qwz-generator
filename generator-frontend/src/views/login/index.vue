@@ -6,13 +6,13 @@
     </div>
 
     <!-- 页脚 -->
-    <login-footer />
+    <global-footer />
   </div>
 </template>
 
 <script setup lang="ts">
-  import LoginContent from './components/LoginContent.vue'
-  import LoginFooter from './components/LoginFooter.vue'
+  import LoginContent from './LoginContent.vue'
+  import GlobalFooter from '@/layouts/BasicFooter.vue'
 </script>
 
 <script lang="ts">
@@ -22,5 +22,60 @@
 </script>
 
 <style lang="less" scoped>
-  @import 'index.less';
+  @root-entry-name: 'default';
+  @import (reference) 'ant-design-vue/es/style/themes/index';
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: auto;
+    background: @layout-body-background;
+  }
+
+  .lang {
+    width: 100%;
+    height: 40px;
+    line-height: 44px;
+    text-align: right;
+    text-align: center;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column-reverse;
+    :deep(.ant-dropdown-trigger) {
+      margin-right: 24px;
+    }
+  }
+
+  .content {
+    flex: 1;
+    padding: 32px 0;
+  }
+
+  @media (min-width: @screen-md-min) {
+    .container {
+      background-image: url('@/assets/backgroud.svg');
+      background-repeat: no-repeat;
+      background-position: center 110px;
+      background-size: 100%;
+    }
+
+    .content {
+      padding: 32px 0 24px;
+    }
+  }
+
+  :deep(.icon) {
+    margin-left: 8px;
+    color: rgba(0, 0, 0, 0.2);
+    font-size: 24px;
+    vertical-align: middle;
+    cursor: pointer;
+    transition: color 0.3s;
+
+    &:hover {
+      color: @primary-color;
+    }
+  }
+
 </style>

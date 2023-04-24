@@ -4,7 +4,7 @@
       <a-input
         v-model:value="modelRef.username"
         size="large"
-        placeholder="账号: admin"
+        placeholder="账号"
         @press-enter="trySubmit"
       >
         <template #prefix>
@@ -17,7 +17,7 @@
       <a-input-password
         v-model:value="modelRef.password"
         size="large"
-        placeholder="密码: a123456"
+        placeholder="密码"
         autocomplete="on"
         @press-enter="trySubmit"
       >

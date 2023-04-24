@@ -27,7 +27,7 @@
       <account-login-form ref="accountLoginFormRef" @try-submit="handleLogin" />
 
       <div style="margin-bottom: 24px">
-        <a-checkbox v-model:checked="rememberMe" no-style name="autoLogin"> 自动登录</a-checkbox>
+        <a-checkbox v-model:checked="rememberMe" no-style name="autoLogin"> 记住密码</a-checkbox>
       </div>
 
       <a-button
@@ -42,13 +42,7 @@
 
       <!-- 扩展部分 -->
       <div :class="getCls('other')">
-        <a-space :size="8">
-          <span>其他登录方式</span>
-          <alipay-outlined class="icon" />
-          <taobao-outlined class="icon" />
-          <weibo-outlined class="icon" />
-        </a-space>
-        <a style="float: right"> 注册账户 </a>
+        <a style="float: right"> SSO 登陆</a>
       </div>
     </div>
 
@@ -58,7 +52,7 @@
 </template>
 
 <script setup lang="ts">
-  import AccountLoginForm from '@/views/login/components/AccountLoginForm.vue'
+  import AccountLoginForm from '@/views/login/AccountLoginForm.vue'
   import type { LoginResult, LoginFormInstance } from '@/api/auth/types'
 
   import { useUserStore } from '@/store/user-store'
@@ -84,8 +78,6 @@
   // 当前登录类型，以及对应的登录组件
   let loginFormRef = ref<LoginFormInstance>()
   const accountLoginFormRef = ref<LoginFormInstance>()
-
-
 
   /** 存储登录信息 */
   function store(res: LoginResult) {
@@ -140,9 +132,88 @@
 </script>
 
 <style lang="less">
-  @import 'loginContent.less';
+  @import (reference) '../../../node_modules/ant-design-vue/es/style/themes/index.less';
 
   .login-tabs .ant-tabs-tab {
     padding: 12px 16px !important;
+  }
+
+  @pro-form-login-prefix-cls: ~'@{ant-prefix}-pro-login-content';
+
+  .@{pro-form-login-prefix-cls}-container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    height: 100%;
+    padding: 32px 0;
+    overflow: auto;
+    background: inherit;
+  }
+
+  @media (min-width: @screen-md-min) {
+    .@{pro-form-login-prefix-cls}-container {
+      padding: 32px 0 24px;
+      background-repeat: no-repeat;
+      background-position: center 110px;
+      background-size: 100%;
+    }
+  }
+
+  .@{pro-form-login-prefix-cls}-top {
+    text-align: center;
+  }
+
+  .@{pro-form-login-prefix-cls}-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    line-height: 44px;
+    a {
+      text-decoration: none;
+    }
+  }
+
+  .@{pro-form-login-prefix-cls}-title {
+    position: relative;
+    top: 2px;
+    color: @heading-color;
+    font-weight: 600;
+    font-size: 33px;
+  }
+
+  .@{pro-form-login-prefix-cls}-logo {
+    width: 44px;
+    height: 44px;
+    margin-right: 16px;
+    vertical-align: top;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .@{pro-form-login-prefix-cls}-desc {
+    margin-top: 12px;
+    margin-bottom: 40px;
+    color: @text-color-secondary;
+    font-size: @font-size-base;
+  }
+
+  .@{pro-form-login-prefix-cls}-main {
+    min-width: 328px;
+    max-width: 500px;
+    margin: 0 auto;
+
+    .@{ant-prefix}-tabs-nav-list {
+      margin: 0 auto;
+      font-size: 16px;
+    }
+
+    .@{pro-form-login-prefix-cls}-other {
+      margin-top: 24px;
+      line-height: 22px;
+      text-align: left;
+    }
   }
 </style>
