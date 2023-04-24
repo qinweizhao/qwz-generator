@@ -37,7 +37,7 @@
     width: 100%;
     height: 40px;
     line-height: 44px;
-    text-align: right;
+    //text-align: right;
     text-align: center;
     display: flex;
     align-items: flex-end;
@@ -77,5 +77,4 @@
       color: @primary-color;
     }
   }
-
 </style>
