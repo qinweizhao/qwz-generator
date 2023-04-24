@@ -30,6 +30,7 @@
 </template>
 
 <script setup lang="ts">
+  import { reactive } from 'vue'
   import { accountLogin } from '@/api/auth'
   import { Form } from 'ant-design-vue'
   import { passEncrypt } from '@/utils/password-utils'

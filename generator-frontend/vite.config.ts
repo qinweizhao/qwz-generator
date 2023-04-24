@@ -5,9 +5,6 @@ import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 import { createStyleImportPlugin, AndDesignVueResolve } from 'vite-plugin-style-import'
 import { resolve } from 'path'
 
-// 自动导入 vue 组件，无需手动 import
-import AutoImport from 'unplugin-auto-import/vite'
-
 const serverAddress = 'http://127.0.0.1:7777'
 
 // https://vitejs.dev/config/
@@ -18,28 +15,6 @@ export default defineConfig({
     }
   },
   plugins: [
-    // 自动导入 vue
-    AutoImport({
-      // global imports to register
-      imports: [
-        // presets
-        'vue',
-        'vue-router',
-        'pinia'
-      ],
-      // Generate corresponding .eslintrc-auto-import.json file.
-      // eslint globals Docs - https://eslint.org/docs/user-guide/configuring/language-options#specifying-globals
-      eslintrc: {
-        enabled: true, // Default `false`
-        filepath: './.eslintrc-auto-import.json', // Default `./.eslintrc-auto-import.json`
-        globalsPropValue: true // Default `true`, (true | false | 'readonly' | 'readable' | 'writable' | 'writeable')
-      },
-      // Filepath to generate corresponding .d.ts file.
-      // Defaults to './auto-imports.d.ts' when `typescript` is installed locally.
-      // Set `false` to disable.
-      dts: './types/auto-imports.d.ts'
-    }),
-
     vue(),
     // 组件按需引入
     Components({

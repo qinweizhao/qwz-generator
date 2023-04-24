@@ -45,13 +45,12 @@
         <a style="float: right"> SSO 登陆</a>
       </div>
     </div>
-
-    <!-- 登陆验证码 -->
-    <login-captcha v-if="false" ref="loginCaptchaRef" @success="handleSubmit" />
   </div>
 </template>
 
 <script setup lang="ts">
+  import { ref } from 'vue'
+  import { useRouter } from 'vue-router'
   import AccountLoginForm from '@/views/login/AccountLoginForm.vue'
   import type { LoginResult, LoginFormInstance } from '@/api/auth/types'
 
@@ -72,32 +71,21 @@
   // 自动登录（记住我）
   const rememberMe = ref(false)
 
-  // 登陆验证码组件
-  const loginCaptchaRef = ref()
-
   // 当前登录类型，以及对应的登录组件
   let loginFormRef = ref<LoginFormInstance>()
   const accountLoginFormRef = ref<LoginFormInstance>()
+  loginFormRef = accountLoginFormRef
+
+  console.log('loginFormRef')
+  console.log(loginFormRef)
+  console.log('accountLoginFormRef')
+  console.log(accountLoginFormRef)
 
   /** 存储登录信息 */
   function store(res: LoginResult) {
     const userStore = useUserStore()
     // 存储 token
     userStore.accessToken = res.access_token
-
-    // 存储用户信息
-    const info = res.info
-    const roleCodes = res.attributes?.roleCodes || []
-    const permissions = res.attributes?.permissions || []
-    userStore.userInfo = {
-      ...info,
-      roleCodes,
-      permissions
-    }
-
-    // TODO 自动登录处理
-    // const ttl = res.expires_in * 1000
-    // const refreshToken = res.refresh_token
   }
 
   function handleLogin() {

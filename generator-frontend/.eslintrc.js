@@ -36,7 +36,8 @@ module.exports = defineConfig({
     defineProps: 'readonly',
     defineEmits: 'readonly',
     defineExpose: 'readonly',
-    withDefaults: 'readonly'
+    withDefaults: 'readonly',
+    reactive: true,
   }
 
 })
