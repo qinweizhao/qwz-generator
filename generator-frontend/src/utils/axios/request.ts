@@ -66,7 +66,8 @@ function handleFail<T>(requestOptions: RequestOptions<T>, res: R<T>) {
 function handleError<T>(requestOptions: RequestOptions<T>, e: BAxiosError) {
   // 未被 axios拦截器处理过，则在这里继续处理
   if (requestOptions.errorMessage && !e.resolved) {
-    const errorMessage = e.response?.data?.message || e.message || 'error request'
+    // const errorMessage = e.response?.data?.message || e.message || 'error request'
+    const errorMessage = e.message || 'error request'
     message.error(errorMessage)
   }
   requestOptions.onError && requestOptions.onError(e)

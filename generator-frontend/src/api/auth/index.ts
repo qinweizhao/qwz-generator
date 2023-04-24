@@ -1,4 +1,4 @@
-import httpClient from '@/utils/axios'
+import request from '@/utils/axios'
 import type {
   OAuth2LoginParam,
   AccountLoginParam,
@@ -31,8 +31,8 @@ export function mobileLogin(parameter: MobileLoginParam) {
  * @param parameter 登录参数
  */
 function login(parameter: OAuth2LoginParam) {
-  return httpClient.request<LoginResult>({
-    url: '/oauth/token',
+  return request.request<LoginResult>({
+    url: '/login',
     method: 'POST',
     headers: {
       Authorization: BASIC_AUTHORIZATION
@@ -46,7 +46,7 @@ function login(parameter: OAuth2LoginParam) {
  * @param token accessToken
  */
 export function checkToken(token: string) {
-  return httpClient.request({
+  return request.request({
     url: '/oauth/check_token',
     method: 'POST',
     headers: {
@@ -60,5 +60,5 @@ export function checkToken(token: string) {
  * 登出
  */
 export function logout() {
-  return httpClient.delete('/oauth/logout')
+  return request.delete('/oauth/logout')
 }

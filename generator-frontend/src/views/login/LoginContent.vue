@@ -76,11 +76,6 @@
   const accountLoginFormRef = ref<LoginFormInstance>()
   loginFormRef = accountLoginFormRef
 
-  console.log('loginFormRef')
-  console.log(loginFormRef)
-  console.log('accountLoginFormRef')
-  console.log(accountLoginFormRef)
-
   /** 存储登录信息 */
   function store(res: LoginResult) {
     const userStore = useUserStore()
