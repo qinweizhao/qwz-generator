@@ -31,4 +31,11 @@ public class LoginController {
         return result;
     }
 
+    @DeleteMapping("/logout")
+    public void logout() {
+
+        System.out.println("执行退出操作");
+    }
+
+
 }
