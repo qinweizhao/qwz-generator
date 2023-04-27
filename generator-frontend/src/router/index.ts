@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import { BallcatRouteRecordRaw } from '@/router/types'
+import routerGuards from '@/router/guards'
 
 const menuRouters: Array<BallcatRouteRecordRaw> = [
   {
@@ -58,5 +59,7 @@ const router = createRouter({
 })
 
 export { menuRouters }
+
+routerGuards(router)
 
 export default router
